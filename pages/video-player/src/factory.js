@@ -50,21 +50,21 @@ async function getWorker() {
 }
 
 const worker = await getWorker()
-worker.postMessage('Hello from main thread')
+const view = new View()
+const [rootPath] = window.location.href.split('/pages/')
+view.setVideoSrc(`${rootPath}/assets/video.mp4`)
 
 const camera = await Camera.init()
 
-const [rootPath] = window.location.href.split('/pages/')
 
 
 const factory = {
   async initialize() {
     console.log('Initialize callled in factory')
     return Controller.initialize({
-      view: new View(),
+      view: view,
       worker,
       camera,
-      videoUrl: `${rootPath}/assets/video.mp4`
     })
   }
 }
