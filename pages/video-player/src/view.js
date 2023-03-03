@@ -40,4 +40,8 @@ export default class View {
         this.#statusElement.innerHTML = text
     }
 
+    setVideoSrc(url) {
+        this.#videoElement.src = url
+    }
+
 }
